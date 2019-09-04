@@ -1,0 +1,42 @@
+<a [routerLink]="['/']" xmlns="http://www.w3.org/1999/html">
+    <h1>Reminder App</h1>
+</a>
+
+<div>
+    <!--<a [routerLink]="['/cart']" class="button fancy-button button-space"><i class="material-icons">shopping_cart</i>Checkout</a>-->
+    <a [routerLink]="['/cart']" class="button fancy-button button-space"><i class="material-icons">alarm</i>Reminders</a>
+    <a class="button fancy-button button-space" [matMenuTriggerFor] = "menu"><i class="material-icons">build</i>Account</a>
+
+    <mat-menu #menu = "matMenu">
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>Log Out</button>
+        <button mat-menu-item [matMenuTriggerFor] = "recent">Recent</button>
+    </mat-menu>
+    <mat-menu #recent = "matMenu">
+        <button mat-menu-item>File 1</button>
+        <button mat-menu-item>File 2</button>
+    </mat-menu>
+
+</div>
+
+<!--<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+  <button type="button" class="btn btn-secondary">1</button>
+  <button type="button" class="btn btn-secondary">2</button>
+
+  <div class="btn-group" role="group">
+    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Dropdown
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <a class="dropdown-item" href="#">Dropdown link</a>
+      <a class="dropdown-item" href="#">Dropdown link</a>
+    </div>
+  </div>
+</div>-->
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+
+-->

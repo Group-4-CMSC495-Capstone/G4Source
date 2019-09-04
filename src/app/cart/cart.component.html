@@ -1,0 +1,37 @@
+<h3>Reminders</h3>
+
+<p>
+    <!--<a routerLink="/shipping">Shipping Prices</a>-->
+</p>
+
+<span *ngIf="items?.length===0; else elseBlock">No Pending Reminders...</span>
+
+<ng-template #elseBlock>
+<div class="cart-item" *ngFor="let item of items">
+
+    <span>{{item.name}}</span>
+    <span>{{item.date}}</span>
+
+</div>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+
+    <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name">
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input id="email" type="text" formControlName="email">
+    </div>
+
+    <div>
+        <label for="phone">Phone</label>
+        <input id="phone" type="text" formControlName="phone">
+    </div>
+
+    <button class="button" type="submit" (click)="confirm()">Set Reminders</button>
+
+</form>
+</ng-template>
