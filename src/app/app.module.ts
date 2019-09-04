@@ -16,6 +16,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule} from "@angular/material/button";
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import {MatCardModule} from "@angular/material/card";
+import { AddReminderComponent } from './add-reminder/add-reminder.component';
 
 @NgModule({
   imports: [
@@ -30,8 +33,11 @@ import {MatButtonModule} from "@angular/material/button";
       {path: '', component: ProductListComponent},
       {path: 'products/:productId', component: ProductDetailsComponent},
       {path: 'cart', component: CartComponent},
-      {path: 'shipping', component: ShippingComponent}
+      {path: 'shipping', component: ShippingComponent},
+      {path: 'settings', component: AccountSettingsComponent},
+      {path: 'add', component: AddReminderComponent}
     ]),
+    MatCardModule,
   ],
   declarations: [
     AppComponent,
@@ -40,7 +46,9 @@ import {MatButtonModule} from "@angular/material/button";
     ProductAlertsComponent,
     ProductDetailsComponent,
     CartComponent,
-    ShippingComponent
+    ShippingComponent,
+    AccountSettingsComponent,
+    AddReminderComponent
   ],
   bootstrap: [AppComponent],
   providers: [CartService]

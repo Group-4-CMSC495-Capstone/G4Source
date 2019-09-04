@@ -1,19 +1,25 @@
 <h2>Reminders</h2>
 <div *ngFor="let product of products; index as productId">
 
+  <mat-card>
   <h3>
-    <a [title]="product.name+' details'" [routerLink]="['/products',productId]">{{product.name}}</a>
+    <a mat-card-title [title]="product.name+' details'" [routerLink]="['/products',productId]">{{product.name}}</a>
+    <mat-card-subtitle>{{product.date}}</mat-card-subtitle>
   </h3>
-
+<mat-card-content>
   <p *ngIf="product.description">
-    Description:{{product.description}}
+    {{product.description}}
   </p>
-
+</mat-card-content>
+    <mat-card-actions>
   <button (click)="share()">Share</button>
 
   <app-product-alerts [product]="product" (notify)="onNotify()"></app-product-alerts>
-
+    </mat-card-actions>
+  </mat-card>
 </div>
+<br>
+<button [routerLink]="['/add']">Add Reminder</button>
 
 <!-- 
 Copyright Google LLC. All Rights Reserved.

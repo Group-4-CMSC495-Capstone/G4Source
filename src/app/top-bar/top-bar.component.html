@@ -8,7 +8,7 @@
     <a class="button fancy-button button-space" [matMenuTriggerFor] = "menu"><i class="material-icons">build</i>Account</a>
 
     <mat-menu #menu = "matMenu">
-        <button mat-menu-item>Settings</button>
+        <button [routerLink]="['/settings']" mat-menu-item>Settings</button>
         <button mat-menu-item>Log Out</button>
         <button mat-menu-item [matMenuTriggerFor] = "recent">Recent</button>
     </mat-menu>

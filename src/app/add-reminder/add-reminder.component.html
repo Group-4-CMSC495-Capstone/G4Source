@@ -1,0 +1,22 @@
+<h2>Add a Reminder</h2>
+
+<form [formGroup]="addReminderForm" (ngSubmit)="onSubmit(addReminderForm.value)">
+
+    <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name">
+    </div>
+
+    <div>
+        <label for="date">Date</label>
+        <input id="date" type="text" formControlName="date">
+    </div>
+
+    <div>
+        <label for="description">Description</label>
+        <input id="description" type="text" formControlName="description">
+    </div>
+
+    <button class="button" type="submit">Add Reminder</button>
+
+</form>
