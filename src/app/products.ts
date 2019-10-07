@@ -1,5 +1,5 @@
 export const products = [
-  {
+ /* {
     name: 'Eat a Cake',
     date: "1/1/19",
     description: 'Remember to eat a cake once in a while'
@@ -13,7 +13,7 @@ export const products = [
     name: 'Finish CMSC495 Capstone Project',
     date: "Sometime in October",
     description: 'What are we doing again?'
-  }
+  }*/
 ];
 
 

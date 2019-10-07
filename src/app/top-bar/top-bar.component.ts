@@ -1,16 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthenticationService} from "../_services/authentication.service";
+import {UserService} from "../_services/user.service";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-top-bar',
-  templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.css']
+    selector: 'app-top-bar',
+    templateUrl: './top-bar.component.html',
+    styleUrls: ['./top-bar.component.css']
 })
+
 export class TopBarComponent implements OnInit {
+    currentUser: any;
+    users = [];
 
-  constructor() { }
+    constructor(
+        private authenticationService: AuthenticationService,
+        private router: Router
+    ) {
+        //this.currentUser = this.authenticationService.currentUserValue;
+    }
 
-  ngOnInit() {
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
+
+    ngOnInit() {
+
+        this.authenticationService.currentUser.subscribe(user=>this.currentUser = user);
+
+    }
 
 }
 

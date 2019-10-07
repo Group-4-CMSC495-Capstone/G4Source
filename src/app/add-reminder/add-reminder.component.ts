@@ -18,7 +18,9 @@ export class AddReminderComponent implements OnInit {
 
       name:'',
       date:'',
+      time:'',
       description:'',
+      noteTime:''
 
     });
 

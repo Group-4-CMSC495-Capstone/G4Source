@@ -115,7 +115,12 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {}
+          "options": {
+
+            "branch": "master",
+            "repo": "https://github.com/Group-4-CMSC495-Capstone/Group-4-CMSC495-Capstone.github.io.git"
+
+          }
         }
       }
     }

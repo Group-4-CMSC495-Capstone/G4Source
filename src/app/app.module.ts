@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -19,6 +19,14 @@ import {MatButtonModule} from "@angular/material/button";
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import {MatCardModule} from "@angular/material/card";
 import { AddReminderComponent } from './add-reminder/add-reminder.component';
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import {fakeBackendProvider} from "./_helpers/fake-backend";
+import {AuthGuard} from "./_helpers/auth.guard";
+import {ErrorInterceptor} from "./_helpers/error.interceptor";
+import {JwtInterceptor} from "./_helpers/jwt.interceptor";
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   imports: [
@@ -30,12 +38,16 @@ import { AddReminderComponent } from './add-reminder/add-reminder.component';
     BrowserAnimationsModule,
     MatButtonModule,
     RouterModule.forRoot([
-      {path: '', component: ProductListComponent},
-      {path: 'products/:productId', component: ProductDetailsComponent},
-      {path: 'cart', component: CartComponent},
-      {path: 'shipping', component: ShippingComponent},
-      {path: 'settings', component: AccountSettingsComponent},
-      {path: 'add', component: AddReminderComponent}
+      {path: '', component: ProductListComponent, canActivate: [AuthGuard]},
+      //{path: '', component: HomeComponent, canActivate: [AuthGuard]},
+      {path: 'login', component:LoginComponent},
+      {path: 'register', component: RegisterComponent},
+      {path: 'products/:productId', component: ProductDetailsComponent, canActivate: [AuthGuard]},
+      {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
+      {path: 'shipping', component: ShippingComponent, canActivate: [AuthGuard]},
+      {path: 'settings', component: AccountSettingsComponent, canActivate: [AuthGuard]},
+      {path: 'add', component: AddReminderComponent, canActivate: [AuthGuard]},
+      {path:'**', redirectTo:''}
     ]),
     MatCardModule,
   ],
@@ -48,10 +60,18 @@ import { AddReminderComponent } from './add-reminder/add-reminder.component';
     CartComponent,
     ShippingComponent,
     AccountSettingsComponent,
-    AddReminderComponent
+    AddReminderComponent,
+    HomeComponent,
+    RegisterComponent,
+    LoginComponent,
+    AlertComponent
   ],
   bootstrap: [AppComponent],
-  providers: [CartService]
+  providers: [CartService, fakeBackendProvider,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+  ]
 })
 export class AppModule { }
 
