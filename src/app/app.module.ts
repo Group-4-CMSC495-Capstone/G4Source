@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -22,11 +22,11 @@ import { AddReminderComponent } from './add-reminder/add-reminder.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import {fakeBackendProvider} from "./_helpers/fake-backend";
 import {AuthGuard} from "./_helpers/auth.guard";
-import {ErrorInterceptor} from "./_helpers/error.interceptor";
-import {JwtInterceptor} from "./_helpers/jwt.interceptor";
 import { AlertComponent } from './alert/alert.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   imports: [
@@ -40,16 +40,19 @@ import { AlertComponent } from './alert/alert.component';
     RouterModule.forRoot([
       {path: '', component: ProductListComponent, canActivate: [AuthGuard]},
       //{path: '', component: HomeComponent, canActivate: [AuthGuard]},
-      {path: 'login', component:LoginComponent},
+      {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
       {path: 'products/:productId', component: ProductDetailsComponent, canActivate: [AuthGuard]},
       {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
       {path: 'shipping', component: ShippingComponent, canActivate: [AuthGuard]},
       {path: 'settings', component: AccountSettingsComponent, canActivate: [AuthGuard]},
       {path: 'add', component: AddReminderComponent, canActivate: [AuthGuard]},
-      {path:'**', redirectTo:''}
+      {path: '**', redirectTo: ''}
     ]),
     MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   declarations: [
     AppComponent,
@@ -67,10 +70,7 @@ import { AlertComponent } from './alert/alert.component';
     AlertComponent
   ],
   bootstrap: [AppComponent],
-  providers: [CartService, fakeBackendProvider,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
+  providers: [CartService,
   ]
 })
 export class AppModule { }

@@ -8,24 +8,49 @@
     </div>
 
     <div>
+        <label for="description">Description</label>
+        <textarea id="description" type="text" formControlName="description"></textarea>
+    </div>
+    <br>
+    <div>
         <label for="date">Date</label>
-        <input id="date" type="text" formControlName="date">
+        <input id="date" matInput [min]="minDate" [max]="" [matDatepicker]="picker" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker ></mat-datepicker>
     </div>
 
     <div>
         <label for="time">Time</label>
-        <input id="time" type="text" formControlName="time">
+        <div id="time">
+            <select id="hour" formControlName="hour">
+                <option></option>
+                <option *ngFor="let in of counter(12); let i=index">
+                    {{((i + 1) < 10) ? 0 : ''}}{{i + 1}}
+                </option>
+            </select>
+            :
+            <select id="min" formControlName="min">
+                <option></option>
+                <option *ngFor="let in of counter(60); let i=index">
+                    {{((i) < 10) ? 0 : ''}}{{i}}
+                </option>
+            </select>
+
+            <select id="meridian" formControlName="meridian">
+                <option>am</option>
+                <option>pm</option>
+            </select>
+        </div>
     </div>
 
-    <div>
-        <label for="description">Description</label>
-        <input id="description" type="text" formControlName="description">
-    </div>
+    <br>
 
+    <!--
     <div>
         <label for="noteTime">Notification Time</label>
         <input id="noteTime" type="text" formControlName="noteTime">
     </div>
+    -->
 
     <button class="button" type="submit">Add Reminder</button>
 

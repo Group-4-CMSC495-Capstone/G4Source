@@ -4,7 +4,7 @@
 
 <div>
     <!--<a [routerLink]="['/cart']" class="button fancy-button button-space"><i class="material-icons">shopping_cart</i>Checkout</a>-->
-    <span *ngIf="currentUser" [style.color]="'white'" class="button-space">Welcome, {{currentUser.username}}</span>
+    <span *ngIf="currentUser" [style.color]="'white'" class="button-space">Welcome, {{currentUser.username+"#"+currentUser.user_id}}</span>
     <a *ngIf="!currentUser" [routerLink]="['/login']" class="button fancy-button button-space"><i class="material-icons">alarm</i>Login</a>
     <a *ngIf="!currentUser" [routerLink]="['/register']" class="button fancy-button button-space"><i class="material-icons">alarm</i>Register</a>
     <a *ngIf="currentUser" (click)="logout()" class="button fancy-button button-space"><i class="material-icons">alarm</i>Logout</a>

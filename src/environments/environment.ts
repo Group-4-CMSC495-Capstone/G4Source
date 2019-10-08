@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl:   'http://localhost:4200'
+  apiUrl:   'https://remind-a-p-p.herokuapp.com'
 };
 
 /*
