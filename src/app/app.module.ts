@@ -27,33 +27,35 @@ import { AlertComponent } from './alert/alert.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MatMenuModule,
-    MatIconModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    RouterModule.forRoot([
-      {path: '', component: ProductListComponent, canActivate: [AuthGuard]},
-      //{path: '', component: HomeComponent, canActivate: [AuthGuard]},
-      {path: 'login', component: LoginComponent},
-      {path: 'register', component: RegisterComponent},
-      {path: 'products/:productId', component: ProductDetailsComponent, canActivate: [AuthGuard]},
-      {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
-      {path: 'shipping', component: ShippingComponent, canActivate: [AuthGuard]},
-      {path: 'settings', component: AccountSettingsComponent, canActivate: [AuthGuard]},
-      {path: 'add', component: AddReminderComponent, canActivate: [AuthGuard]},
-      {path: '**', redirectTo: ''}
-    ]),
-    MatCardModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSelectModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatMenuModule,
+        MatIconModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        RouterModule.forRoot([
+            {path: '', component: ProductListComponent, canActivate: [AuthGuard]},
+            //{path: '', component: HomeComponent, canActivate: [AuthGuard]},
+            {path: 'login', component: LoginComponent},
+            {path: 'register', component: RegisterComponent},
+            {path: 'products/:productId', component: ProductDetailsComponent, canActivate: [AuthGuard]},
+            {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
+            {path: 'shipping', component: ShippingComponent, canActivate: [AuthGuard]},
+            {path: 'settings', component: AccountSettingsComponent, canActivate: [AuthGuard]},
+            {path: 'add', component: AddReminderComponent, canActivate: [AuthGuard]},
+            {path: '**', redirectTo: ''}
+        ]),
+        MatCardModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSelectModule,
+        FlexLayoutModule
+    ],
   declarations: [
     AppComponent,
     TopBarComponent,

@@ -55,6 +55,17 @@ export class LoginComponent implements OnInit {
         .pipe(first())
         .subscribe(
             data => {
+
+              console.log(data);
+
+              if (!data) {
+                this.alertService.error("Failed to login!");
+                this.loading=false;
+
+                return;
+
+              }
+
               this.router.navigate([this.returnUrl]);
             },
             error => {

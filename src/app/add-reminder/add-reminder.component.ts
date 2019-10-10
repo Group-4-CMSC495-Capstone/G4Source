@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {products} from "../products";
 import {Router} from "@angular/router";
 import {environment} from "../../environments/environment";
@@ -35,7 +35,7 @@ export class AddReminderComponent implements OnInit {
 
             name: '',
             description: '',
-            date: '',
+            date: ['', Validators.required],
             hour: '',
             min: '',
             meridian: '',
@@ -63,12 +63,13 @@ export class AddReminderComponent implements OnInit {
         if (!formdata.date){
 
           this.alertService.error("Invalid date entered!");
+          return;
 
         }
 
         if (!formdata.meridian || !formdata.hour || !formdata.min) {
 
-            this.alertService.error("Invalid time entered! Added previous reminder with no time.", true);
+            this.alertService.error("Invalid time entered! Attempting to add reminder with no time.", true);
 
         } else {
             if (formdata.meridian === "pm") {
@@ -86,7 +87,7 @@ export class AddReminderComponent implements OnInit {
             }
         }
 
-        console.log(formdata.hour + ":" + formdata.min);
+        //console.log(formdata.hour + ":" + formdata.min);
 
         formdata.notify_date.setMinutes(formdata.min);
         formdata.notify_date.setHours(formdata.hour);

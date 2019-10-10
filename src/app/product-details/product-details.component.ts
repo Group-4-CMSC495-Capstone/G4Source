@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { products } from '../products';
 import { CartService } from '../cart.service';
+import {environment} from "../../environments/environment";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-product-details',
@@ -13,7 +15,7 @@ export class ProductDetailsComponent implements OnInit {
 
   product;
 
-  constructor(private route: ActivatedRoute, private cartService: CartService) { }
+  constructor(private route: ActivatedRoute, private cartService: CartService, private http:HttpClient) { }
 
   addToCart(product){
 
@@ -27,7 +29,11 @@ export class ProductDetailsComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
 
-      this.product = products[+params.get('productId')];
+      this.http.get(environment.apiUrl+'/reminders/'+params.get('productId')).subscribe(result=>{
+
+        this.product=result[0];
+        console.log(result);
+      });
 
     })
 

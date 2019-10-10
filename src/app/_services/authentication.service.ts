@@ -28,6 +28,14 @@ export class AuthenticationService {
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
 
+                if (!user[0]){
+
+                    console.log("Failed login!");
+                    return null;
+
+                }
+
+
                 console.log("Got user: "+JSON.stringify(user[0]));
                 localStorage.setItem('currentUser', JSON.stringify(user[0]));
 

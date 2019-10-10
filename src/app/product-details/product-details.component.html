@@ -1,12 +1,12 @@
-<h2>Product Details</h2>
+<h2>Reminder Details</h2>
 
 <div *ngIf="product">
 
-  <h3>{{product.name}}</h3>
-  <h4>{{product.date}}</h4>
-  <p>{{product.description}}</p>
+  <h3>{{product.event_name}}</h3>
+  <h4>{{product.notify_date}}</h4>
+  <p>{{product.descr}}</p>
 
-  <button (click)="addToCart(product)" class="button-space">Remind Me!</button>
+  <!--<button (click)="addToCart(product)" class="button-space">Remind Me!</button>-->
   <button [routerLink]="['/']">Back</button>
 
 </div>

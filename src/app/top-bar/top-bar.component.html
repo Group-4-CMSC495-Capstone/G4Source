@@ -9,16 +9,16 @@
     <a *ngIf="!currentUser" [routerLink]="['/register']" class="button fancy-button button-space"><i class="material-icons">alarm</i>Register</a>
     <a *ngIf="currentUser" (click)="logout()" class="button fancy-button button-space"><i class="material-icons">alarm</i>Logout</a>
     <a *ngIf="currentUser" [routerLink]="['/']" class="button fancy-button button-space"><i class="material-icons">alarm</i>Reminders</a>
-    <!--<a *ngIf="currentUser" class="button fancy-button button-space" [matMenuTriggerFor] = "menu"><i class="material-icons">build</i>Account</a>-->
+    <a *ngIf="currentUser" class="button fancy-button button-space" [matMenuTriggerFor] = "menu"><i class="material-icons">build</i>Account</a>
 
     <mat-menu #menu = "matMenu">
         <button [routerLink]="['/settings']" mat-menu-item>Settings</button>
-        <button mat-menu-item>Log Out</button>
+        <!--<button mat-menu-item>Log Out</button>
         <button mat-menu-item [matMenuTriggerFor] = "recent">Recent</button>
     </mat-menu>
     <mat-menu #recent = "matMenu">
         <button mat-menu-item>File 1</button>
-        <button mat-menu-item>File 2</button>
+        <button mat-menu-item>File 2</button>-->
     </mat-menu>
 
 </div>
