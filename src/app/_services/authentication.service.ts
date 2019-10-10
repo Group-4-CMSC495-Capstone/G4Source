@@ -20,6 +20,7 @@ export class AuthenticationService {
 
     login(username, password) {
 
+        console.log("Trying to login with: ")
         console.log(username)
         console.log(password)
 
@@ -27,12 +28,11 @@ export class AuthenticationService {
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
 
-                console.log(user[0].username+'#'+user[0].user_id);
-
+                console.log("Got user: "+JSON.stringify(user[0]));
                 localStorage.setItem('currentUser', JSON.stringify(user[0]));
 
                 console.log(localStorage.getItem('currentUser'));
-                this.currentUserSubject.next(user);
+                this.currentUserSubject.next(user[0]);
                 return user;
             }));
     }

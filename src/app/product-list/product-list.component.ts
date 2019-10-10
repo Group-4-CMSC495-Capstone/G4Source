@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Injectable} from '@angular/core';
 
 import { products } from '../products';
 import {environment} from "../../environments/environment";
@@ -16,10 +16,6 @@ export class ProductListComponent {
   products;
 
   constructor( private http:HttpClient, private auth:AuthenticationService) {
-  }
-
-  share() {
-    window.alert('This reminder has been shared!');
   }
 
   delete(id){
@@ -42,9 +38,16 @@ export class ProductListComponent {
 
     this.http.get(environment.apiUrl+'/reminders/user/'+this.auth.currentUserValue.user_id).subscribe(result=>{
 
+      for (let thing in result){
+
+        result[thing].notify_date=new Date(result[thing].notify_date);
+        //console.log(result[thing]);
+
+      }
       this.products=result;
       //console.log(result);
     });
+
 
   }
 

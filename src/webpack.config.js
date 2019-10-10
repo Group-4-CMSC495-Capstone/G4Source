@@ -23,7 +23,7 @@ module.exports = {
         new webpack.DefinePlugin({
             // global app config object
             config: JSON.stringify({
-                apiUrl: 'http://localhost:4000'
+                apiUrl: 'https://remind-a-p-p.herokuapp.com'
             })
         })
     ],

@@ -26,8 +26,6 @@ export class UserService {
         console.log(environment.apiUrl+'/users');
 
         return this.http.post("https://remind-a-p-p.herokuapp.com/users", user, httpOptions);
-
-
         //return this.http.post(environment.apiUrl+'/users', user);
     }
 

@@ -8,8 +8,8 @@
     <a *ngIf="!currentUser" [routerLink]="['/login']" class="button fancy-button button-space"><i class="material-icons">alarm</i>Login</a>
     <a *ngIf="!currentUser" [routerLink]="['/register']" class="button fancy-button button-space"><i class="material-icons">alarm</i>Register</a>
     <a *ngIf="currentUser" (click)="logout()" class="button fancy-button button-space"><i class="material-icons">alarm</i>Logout</a>
-    <a *ngIf="currentUser" [routerLink]="['/cart']" class="button fancy-button button-space"><i class="material-icons">alarm</i>Reminders</a>
-    <a *ngIf="currentUser" class="button fancy-button button-space" [matMenuTriggerFor] = "menu"><i class="material-icons">build</i>Account</a>
+    <a *ngIf="currentUser" [routerLink]="['/']" class="button fancy-button button-space"><i class="material-icons">alarm</i>Reminders</a>
+    <!--<a *ngIf="currentUser" class="button fancy-button button-space" [matMenuTriggerFor] = "menu"><i class="material-icons">build</i>Account</a>-->
 
     <mat-menu #menu = "matMenu">
         <button [routerLink]="['/settings']" mat-menu-item>Settings</button>
