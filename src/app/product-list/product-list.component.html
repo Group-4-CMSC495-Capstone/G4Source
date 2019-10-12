@@ -1,6 +1,7 @@
 <h2>Reminders</h2>
 <div fxLayout="row wrap">
-    <mat-card *ngFor="let product of products; index as productId">
+    <ng-container *ngFor="let product of products; index as productId">
+    <mat-card *ngIf="now<=product.notify_date">
         <h3>
             <a mat-card-title [title]="product.name+' details'"
                [routerLink]="['/reminders',product.event_id]">{{product.event_name}}</a>
@@ -17,10 +18,34 @@
             <app-product-alerts [product]="product" (notify)="onNotify()"></app-product-alerts>
         </mat-card-actions>
     </mat-card>
+    </ng-container>
 </div>
 
 <br>
 <button [routerLink]="['/add']">Add Reminder</button>
+
+<h2>Past Reminders</h2>
+<div fxLayout="row wrap">
+    <ng-container *ngFor="let product of products; index as productId">
+        <mat-card *ngIf="now>product.notify_date">
+        <h3>
+            <a mat-card-title [title]="product.name+' details'"
+               [routerLink]="['/reminders',product.event_id]">{{product.event_name}}</a>
+            <a mat-card-subtitle [routerLink]="['/reminders',product.event_id]">{{product.notify_date}}</a>
+        </h3>
+        <mat-card-content>
+            <p *ngIf="product.descr">
+                {{product.descr}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button (click)="delete(product.event_id)">Delete</button>
+
+            <app-product-alerts [product]="product" (notify)="onNotify()"></app-product-alerts>
+        </mat-card-actions>
+    </mat-card>
+    </ng-container>
+</div>
 
 <!-- 
 Copyright Google LLC. All Rights Reserved.

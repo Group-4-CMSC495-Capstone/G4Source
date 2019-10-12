@@ -14,6 +14,7 @@ import {AuthenticationService} from "../_services/authentication.service";
 })
 export class ProductListComponent {
   products;
+  now=new Date();
 
   constructor( private http:HttpClient, private auth:AuthenticationService) {
   }
@@ -37,6 +38,8 @@ export class ProductListComponent {
   ngOnInit(){
 
     this.http.get(environment.apiUrl+'/reminders/user/'+this.auth.currentUserValue.user_id).subscribe(result=>{
+
+      this.now=new Date();
 
       for (let thing in result){
 
