@@ -51,6 +51,7 @@ export class AccountSettingsComponent implements OnInit {
         this.http.put(environment.apiUrl + "/users/" + this.auth.currentUserValue.user_id, formData, {responseType: 'text'}).subscribe((result) => {
 
           console.log(result);
+          this.alertService.success(result);
 
         });
 

@@ -19,6 +19,7 @@
             <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
         </div>
     </div>
-    <button class="button" type="submit">Change</button>
+    <button class="button button-space" type="submit">Change</button>
+    <button class="button button-space" [routerLink]="['/']">Back</button>
 
 </form>

@@ -1,12 +1,71 @@
-<h2>Reminder Details</h2>
+<h2>Reminder Details and Change Reminder</h2>
 
 <div *ngIf="product">
 
+  <form [formGroup]="changeReminderForm" (ngSubmit)="onSubmit(changeReminderForm.value)">
+
+    <div>
+      <label for="name">Name</label>
+      <input id="name" placeholder="{{product.event_name}}" type="text" formControlName="name">
+    </div>
+
+    <div>
+      <label for="description">Description</label>
+      <textarea id="description" placeholder="{{product.descr}}" type="text" formControlName="description"></textarea>
+    </div>
+    <br>
+    <div>
+      <label for="date">Date</label>
+      <input id="date" placeholder="{{prevDate.toLocaleDateString()}}" matInput [min]="minDate" [max]="" [matDatepicker]="picker" formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker ></mat-datepicker>
+    </div>
+
+    <div>
+      (Reminder Time: {{prevDate.toLocaleTimeString()}})
+      <label for="time">Time</label>
+      <div id="time">
+        <select id="hour" formControlName="hour">
+          <option><!--{{(prevDate.getHours()>12)?prevDate.getHours()-12:(prevDate.getHours()===0?12:prevDate.getHours())}}--></option>
+          <option *ngFor="let in of counter(12); let i=index">
+            {{((i + 1) < 10) ? 0 : ''}}{{i + 1}}
+          </option>
+        </select>
+        :
+        <select id="min" formControlName="min">
+          <option><!--{{prevDate.getMinutes()}}--></option>
+          <option *ngFor="let in of counter(60); let i=index">
+            {{((i) < 10) ? 0 : ''}}{{i}}
+          </option>
+        </select>
+
+        <select id="meridian" formControlName="meridian">
+          <option><!--{{prevDate.getHours()>12?"am":"pm"}}--></option>
+          <option>am</option>
+          <option>pm</option>
+        </select>
+      </div>
+    </div>
+
+    <br>
+
+    <!--
+    <div>
+        <label for="noteTime">Notification Time</label>
+        <input id="noteTime" type="text" formControlName="noteTime">
+    </div>
+    -->
+
+    <button class="button button-space" type="submit">Add Reminder</button>
+    <button class="button button-space" [routerLink]="['/']">Back</button>
+
+  </form>
+<!--
   <h3>{{product.event_name}}</h3>
   <h4>{{product.notify_date}}</h4>
   <p>{{product.descr}}</p>
 
-  <!--<button (click)="addToCart(product)" class="button-space">Remind Me!</button>-->
-  <button [routerLink]="['/']">Back</button>
+  <button (click)="addToCart(product)" class="button-space">Remind Me!</button>
+  <button [routerLink]="['/']">Back</button>-->
 
 </div>

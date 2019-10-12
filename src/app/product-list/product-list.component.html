@@ -3,8 +3,8 @@
     <mat-card *ngFor="let product of products; index as productId">
         <h3>
             <a mat-card-title [title]="product.name+' details'"
-               [routerLink]="['/products',product.event_id]">{{product.event_name}}</a>
-            <mat-card-subtitle>{{product.notify_date}}</mat-card-subtitle>
+               [routerLink]="['/reminders',product.event_id]">{{product.event_name}}</a>
+            <a mat-card-subtitle [routerLink]="['/reminders',product.event_id]">{{product.notify_date}}</a>
         </h3>
         <mat-card-content>
             <p *ngIf="product.descr">
@@ -20,7 +20,7 @@
 </div>
 
 <br>
-<button [routerLink]="['/add']">Add Reminder</button>
+<button [routerLink]="['/add']">Change Reminder</button>
 
 <!-- 
 Copyright Google LLC. All Rights Reserved.

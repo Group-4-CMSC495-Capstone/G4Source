@@ -43,7 +43,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
             //{path: '', component: HomeComponent, canActivate: [AuthGuard]},
             {path: 'login', component: LoginComponent},
             {path: 'register', component: RegisterComponent},
-            {path: 'products/:productId', component: ProductDetailsComponent, canActivate: [AuthGuard]},
+            {path: 'reminders/:productId', component: ProductDetailsComponent, canActivate: [AuthGuard]},
             {path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
             {path: 'shipping', component: ShippingComponent, canActivate: [AuthGuard]},
             {path: 'settings', component: AccountSettingsComponent, canActivate: [AuthGuard]},
